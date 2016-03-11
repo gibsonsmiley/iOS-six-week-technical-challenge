@@ -11,11 +11,14 @@ import Foundation
 class EntityController {
     
     private let kEntities = "entities"
-    var entities = [Entity]()
     static let sharedController = EntityController()
     
+    var entities: [Entity]
+    
     init() {
+        
         self.entities = []
+        
         self.loadFromPersistantStorage()
     }
     

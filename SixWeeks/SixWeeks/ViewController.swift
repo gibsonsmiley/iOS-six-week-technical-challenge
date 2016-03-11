@@ -13,9 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelField: UILabel!
     @IBOutlet weak var textField: UITextField!
     
-    var entity = Entity?()
-    var entities = [Entity]()
-    var entitiesArray = [Entity]()
+    var entity: Entity?
+    var entities: [Entity] = []
+    var entitiesArray: [Entity] = []
     let pair = "->"
     
     override func viewDidLoad() {
@@ -41,10 +41,10 @@ class ViewController: UIViewController {
         
         var entitiesLabel = ""
         for entities in randomized {
-            entitiesLabel += entities.name + ", "
+            entitiesLabel += entities.name + " "
         }
-//        let paired = [pair].joinWithSeperator(randomized.map{ [ $0 ] } )//map($0..< $0*randomized.count - 1) {$0 % 2 == 0 ? randomized[$0/2] : pair}
         labelField.text = entitiesLabel
+        EntityController.sharedController.saveToPersistantStorage()
     }
     
     @IBAction func addButtonTapped(sender: AnyObject) {
@@ -54,24 +54,15 @@ class ViewController: UIViewController {
             let newEntity = Entity(name: self.textField.text!)
             EntityController.sharedController.addEntity(newEntity)
             self.entities.append(newEntity)
-//            self.entity = newEntity
         }
-//        let entityForIndex = self.entities[index]
-//        self.entitiesArray.append(entityForIndex)
         
         var entitiesLabel = ""
         for entity in entities {
             entitiesLabel += entity.name + "  "
         }
-//        let paired2 = [pair].joinWithSeparator(entities.map{[$0]})
-//        let paired = entities.joinWithSeparator(pair)
-//        let array = entitiesLabel.characters.split{$0 == " "}.map(String.init)
-//        let paired = [pair].map(0..< 2*randomized.count - 1) {$0 % 2 == 0 ? randomized[$0/2] : pair}
-//
-//        
-//        print(array)
-        
         labelField.text = entitiesLabel
+        EntityController.sharedController.saveToPersistantStorage()
+        print(entitiesLabel)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
