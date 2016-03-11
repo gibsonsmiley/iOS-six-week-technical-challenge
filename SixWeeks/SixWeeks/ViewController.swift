@@ -20,11 +20,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        labelField.text = String(EntityController.sharedController.entities)
     }
     
     @IBAction func randomizeButtonTapped(sender: AnyObject) {
-        var indexArray = Array(entities.indices)
+        var indexArray = Array(EntityController.sharedController.entities.indices)
         var index = indexArray.endIndex
         
         let randomizer: AnyGenerator<Int> = anyGenerator {
@@ -36,7 +37,7 @@ class ViewController: UIViewController {
             }
             return indexArray[index]
         }
-        let permutationGenerator = PermutationGenerator(elements: entities, indices: AnySequence(randomizer))
+        let permutationGenerator = PermutationGenerator(elements: EntityController.sharedController.entities, indices: AnySequence(randomizer))
         let randomized = Array(permutationGenerator)
         
         var entitiesLabel = ""
@@ -44,7 +45,6 @@ class ViewController: UIViewController {
             entitiesLabel += entities.name + " "
         }
         labelField.text = entitiesLabel
-        EntityController.sharedController.saveToPersistantStorage()
     }
     
     @IBAction func addButtonTapped(sender: AnyObject) {
@@ -69,6 +69,16 @@ class ViewController: UIViewController {
         textField.resignFirstResponder()
         return true
         }
+    @IBAction func clearButtonTapped(sender: AnyObject) {
+        EntityController.sharedController.entities = []
+    }
+    
+    @IBAction func deleteButtonTapped(sender: AnyObject) {
+        if textField.text != nil {
+            
+        }
+        EntityController.sharedController.deleteEntity(<#T##entity: Entity##Entity#>)
+    }
 }
 
 extension String {

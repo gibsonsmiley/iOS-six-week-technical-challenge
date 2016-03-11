@@ -47,5 +47,6 @@ class EntityController {
     func saveToPersistantStorage() {
         let entityDictionaries = self.entities.map({$0.dictionaryCopy()})
         NSUserDefaults.standardUserDefaults().setObject(entityDictionaries, forKey: kEntities)
+        print("saved")
     }
 }
