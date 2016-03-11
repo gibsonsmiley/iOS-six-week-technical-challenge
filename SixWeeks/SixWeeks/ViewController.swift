@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         if textField.text != nil {
             
         }
-        EntityController.sharedController.deleteEntity(<#T##entity: Entity##Entity#>)
+//        EntityController.sharedController.deleteEntity(<#T##entity: Entity##Entity#>)
     }
 }
 
