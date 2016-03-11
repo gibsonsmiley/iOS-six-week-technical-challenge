@@ -12,6 +12,8 @@
 		F08BD21D1C93259B00A08E87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08BD21B1C93259B00A08E87 /* Main.storyboard */; };
 		F08BD21F1C93259B00A08E87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F08BD21E1C93259B00A08E87 /* Assets.xcassets */; };
 		F08BD2221C93259B00A08E87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F08BD2201C93259B00A08E87 /* LaunchScreen.storyboard */; };
+		F08BD22A1C93272400A08E87 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08BD2291C93272400A08E87 /* Entity.swift */; };
+		F08BD22C1C93276A00A08E87 /* EntityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08BD22B1C93276A00A08E87 /* EntityController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		F08BD21E1C93259B00A08E87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F08BD2211C93259B00A08E87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F08BD2231C93259B00A08E87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F08BD2291C93272400A08E87 /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		F08BD22B1C93276A00A08E87 /* EntityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				F08BD2171C93259B00A08E87 /* AppDelegate.swift */,
 				F08BD2191C93259B00A08E87 /* ViewController.swift */,
+				F08BD2291C93272400A08E87 /* Entity.swift */,
+				F08BD22B1C93276A00A08E87 /* EntityController.swift */,
 				F08BD21B1C93259B00A08E87 /* Main.storyboard */,
 				F08BD21E1C93259B00A08E87 /* Assets.xcassets */,
 				F08BD2201C93259B00A08E87 /* LaunchScreen.storyboard */,
@@ -137,6 +143,8 @@
 			files = (
 				F08BD21A1C93259B00A08E87 /* ViewController.swift in Sources */,
 				F08BD2181C93259B00A08E87 /* AppDelegate.swift in Sources */,
+				F08BD22C1C93276A00A08E87 /* EntityController.swift in Sources */,
+				F08BD22A1C93272400A08E87 /* Entity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
