@@ -14,14 +14,27 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     
     var entity: Entity?
-    var entities: [Entity] = []
+    var entities: [Entity] {
+        return EntityController.sharedController.entities
+    }
     var entitiesArray: [Entity] = []
-    let pair = "->"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        labelField.text = String(EntityController.sharedController.entities)
+        let entities = EntityController.sharedController.entities
+        var entitiesLabel = ""
+        for var i=0; i<entities.count; i++ {
+            let entity = entities[i]
+            if i == (entities.count - 1) {
+                entitiesLabel += entity.name
+            } else if i%2 == 0 {
+                entitiesLabel += entity.name + " : "
+            } else {
+                entitiesLabel += entity.name + "\n"
+            }
+        }
+        labelField.text = entitiesLabel
     }
     
     @IBAction func randomizeButtonTapped(sender: AnyObject) {
@@ -37,12 +50,20 @@ class ViewController: UIViewController {
             }
             return indexArray[index]
         }
+        
         let permutationGenerator = PermutationGenerator(elements: EntityController.sharedController.entities, indices: AnySequence(randomizer))
         let randomized = Array(permutationGenerator)
         
         var entitiesLabel = ""
-        for entities in randomized {
-            entitiesLabel += entities.name + " "
+        for var i=0; i<randomized.count; i++ {
+            let entity = randomized[i]
+            if i == (randomized.count - 1) {
+                entitiesLabel += entity.name
+            } else if i%2 == 0 {
+                entitiesLabel += entity.name + " : "
+            } else {
+                entitiesLabel += entity.name + "\n"
+            }
         }
         labelField.text = entitiesLabel
     }
@@ -53,43 +74,31 @@ class ViewController: UIViewController {
         } else {
             let newEntity = Entity(name: self.textField.text!)
             EntityController.sharedController.addEntity(newEntity)
-            self.entities.append(newEntity)
         }
-        
+
         var entitiesLabel = ""
-        for entity in entities {
-            entitiesLabel += entity.name + "  "
+        for var i=0; i<entities.count; i++ {
+            let entity = entities[i]
+            if i == (entities.count - 1) {
+                entitiesLabel += entity.name
+            } else if i%2 == 0 {
+                entitiesLabel += entity.name + " : "
+            } else {
+                entitiesLabel += entity.name + "\n"
+            }
         }
         labelField.text = entitiesLabel
-        EntityController.sharedController.saveToPersistantStorage()
-        print(entitiesLabel)
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
         }
-    @IBAction func clearButtonTapped(sender: AnyObject) {
-        EntityController.sharedController.entities = []
-    }
     
-    @IBAction func deleteButtonTapped(sender: AnyObject) {
-        if textField.text != nil {
-            
-        }
-//        EntityController.sharedController.deleteEntity(<#T##entity: Entity##Entity#>)
+    @IBAction func clearButtonTapped(sender: AnyObject) {
+        labelField.text = ""
+        EntityController.sharedController.entities.removeAll()
+        EntityController.sharedController.saveToPersistantStorage()
     }
 }
-
-extension String {
-    var pairs: [String] {
-        var result: [String] = []
-        let chars = Array(characters)
-        for index in 0.stride(to: chars.count, by: 2) {
-            result.append(String(chars[index..<min(index+2, chars.count)]))
-        }
-        return result
-    }
-}
-
 
